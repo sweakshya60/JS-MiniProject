@@ -1,0 +1,53 @@
+*{
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+.heading{
+    color: red;
+    font-size: 50px;
+    border: 2px dotted white;
+    padding: 10px;
+    margin: 20px;
+}
+
+#title{
+    font-size: 50px;  
+    width: 300px;
+}
+
+#todo-header{
+    font-size: 30px;
+    width: 100px;
+}
+
+#form{
+    margin: 20px;
+}
+
+#user-todo{
+    color: white;
+    padding: 7px;
+    font-size: 15px;
+}
+
+#list{
+    color: white;
+    padding-left:40px;
+    
+}
+
+#clear{
+    color: rgb(7, 7, 7);
+    background-color: rgb(221, 10, 10);
+    border: 1px solid white;
+    padding: 5px;
+    margin: 0px 30px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+p{
+    color: white;
+    font-size: 20px;
+    margin: 20px;
+}
