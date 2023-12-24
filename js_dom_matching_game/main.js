@@ -1,73 +1,78 @@
-let cardsArray = [
-    { name: "Ben10", img: "" },
-    { name: "Dora", img: "" },
-    { name: "doremon", img: "" },
-    { name: "Hakemaru", img: "" },
-    { name: "Hattori", img: "" },
-    { name: "Motupatlu", img: "" },
-    { name: "Niyander", img: "" },
-    { name: "Perman", img: "" },
-    { name: "RollNo21", img: "" },
-    { name: "Ryukendo", img: "" },
-    { name: "Shinchan", img: "" },
-    { name: "Spongebob", img: "" },
+var cardsArray = [
+    { name: "Ben10", img: "https://github.com/sweakshya60/JS-MiniProject/blob/master/js_dom_matching_game/images/ben10.jpeg?raw=true" },
+    { name: "Dora", img: "https://github.com/sweakshya60/JS-MiniProject/blob/master/js_dom_matching_game/images/dora.jpeg?raw=true" },
+    { name: "doremon", img: "https://github.com/sweakshya60/JS-MiniProject/blob/master/js_dom_matching_game/images/doremon.png?raw=true" },
+    { name: "Hakemaru", img: "https://github.com/sweakshya60/JS-MiniProject/blob/master/js_dom_matching_game/images/hakemaru.jpeg?raw=true" },
+    { name: "Hattori", img: "https://github.com/sweakshya60/JS-MiniProject/blob/master/js_dom_matching_game/images/hattori.jpg?raw=true" },
+    { name: "Motupatlu", img: "https://github.com/sweakshya60/JS-MiniProject/blob/master/js_dom_matching_game/images/motupatlu.jpeg?raw=true" },
+    { name: "Niyander", img: "https://github.com/sweakshya60/JS-MiniProject/blob/master/js_dom_matching_game/images/niyander.jpeg?raw=true" },
+    { name: "Perman", img: "https://github.com/sweakshya60/JS-MiniProject/blob/master/js_dom_matching_game/images/perman.jpeg?raw=true" },
+    { name: "RollNo21", img: "https://github.com/sweakshya60/JS-MiniProject/blob/master/js_dom_matching_game/images/rollno21.png?raw=true" },
+    { name: "Ryukendo", img: "https://github.com/sweakshya60/JS-MiniProject/blob/master/js_dom_matching_game/images/rukendo.jpeg?raw=true" },
+    { name: "Shinchan", img: "https://github.com/sweakshya60/JS-MiniProject/blob/master/js_dom_matching_game/images/shinchan.jpg?raw=true" },
+    { name: "Spongebob", img: "https://github.com/sweakshya60/JS-MiniProject/blob/master/js_dom_matching_game/images/spongebob.jpeg?raw=true" },
 ]
-let gameGrid = cardsArray.concat(cardsArray);
+
+var gameGrid = cardsArray.concat(cardsArray);
 
 gameGrid.sort(function () {
     return 0.5 - Math.random();
 })
-let game = document.getElementById("game-board");
-let grid = document.createElement('section');
+var game = document.getElementById("game-board");
+var grid = document.createElement('section');
 grid.setAttribute('class', 'grid');
 game.appendChild(grid)
 
-for (let i = 0; i < gameGrid.length; i++) {
-    let card = document.createElement('div');
+for (var i = 0; i < gameGrid.length; i++) {
+    var card = document.createElement('div');
     card.classList.add('card');
     card.dataset.name = gameGrid[i].name;
 
-    let front = document.createElement('div');
+    var front = document.createElement('div');
     front.classList.add('front');
 
-    let back = document.createElement('div');
+    var back = document.createElement('div');
     back.classList.add('back');
     back.style.backgroundImage = `url(${gameGrid[i].img})`;
+    back.style.backgroundSize = 'cover'; 
+    back.style.backgroundRepeat = 'no-repeat';  
+    back.style.width = '150px';  
+    back.style.height = '150px'; 
 
     grid.appendChild(card);
     card.appendChild(front);
     card.appendChild(back);
 
 }
-let firstGuess = '';
-let secondGuess = '';
+var firstGuess = '';
+var secondGuess = '';
 
-let count = 0;
-let previousTarget = null;
-let delay = 1200;
+var count = 0;
+var previousTarget = null;
+var delay = 1200;
 
-let match = function () {
-    let selected = document.querySelectorAll('.selected');
-    for (let i = 0; i < selected.length; i++) {
+var match = function () {
+    var selected = document.querySelectorAll('.selected');
+    for (var i = 0; i < selected.length; i++) {
         selected[i].classList.add('match');
     }
 };
 
 //reset guesses after two attempts
-let resetGuesses = function(){
+var resetGuesses = function(){
     firstGuess = '';
     secondGuess = '';
     count = 0;
     previousTarget = null;
 
-    let selected = document.querySelectorAll('.selected');
+    var selected = document.querySelectorAll('.selected');
     for (i = 0; i < selected.length; i++){
         selected[i].classList.remove('selected');
     }
 };
 //addevent listener
 grid.addEventListener('click', function (event) {
-    let clicked = event.target;
+    var clicked = event.target;
     if (clicked.nodeName === 'SECTION' || clicked === previousTarget || clicked.parentNode.classList.contains('match') || clicked.parentNode.classList.contains('selected')) {
         return;
     }
@@ -75,11 +80,11 @@ grid.addEventListener('click', function (event) {
         count++;
 
         if (count === 1) {
-            firstGuess == clicked.parentNode.dataset.name;
+            firstGuess = clicked.parentNode.dataset.name;
             clicked.parentNode.classList.add('selected');
         }
         else {
-            secondGuess == clicked.parentNode.dataset.name;
+            secondGuess = clicked.parentNode.dataset.name;
             clicked.parentNode.classList.add('selected');
         }
         if (firstGuess !== '' && secondGuess !== ''){
