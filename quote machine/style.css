@@ -1,0 +1,47 @@
+*, ::before,::after{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+img{
+    height: auto;
+    max-width: 100%;
+    
+}
+
+button{
+    color: #fff;
+    text-transform: uppercase;
+    background: #1c415a;
+    padding: 10px;
+    border-radius: 50px;
+    display: inline-block;
+    border: none;
+}
+
+button:hover{
+    border: 0.2em solid #1c415a;
+    background: grey;
+    color: black;
+  
+}
+
+
+blockquote{
+    border-left: 0.25em solid grey;
+    font-style: italic;
+    margin: 0 0 1.5625em;
+    padding-left: 1em;
+    padding-right: 1em;
+    quotes: none;
+}
+blockquote::before,
+blockquote::after{
+    content: '';
+}
